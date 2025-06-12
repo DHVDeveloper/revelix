@@ -1,9 +1,8 @@
 'use client'
-import Image from 'next/image';
-import styles from './movie-card.module.css';
-import { StarIcon } from '@/ui/icons/star.icon';
 import { MovieCardView } from '@/domain/interfaces/movie';
+import { StarIcon } from '@/ui/icons/star.icon';
 import { useRouter } from 'next/navigation';
+import styles from './movie-card.module.css';
 
 interface MovieCardProps {
     movieInfo: MovieCardView
@@ -20,11 +19,9 @@ export function MovieCard({movieInfo}: MovieCardProps) {
 
     return (
         <div className={styles.card} onClick={handleRedirectMovieDetail}>
-            <Image 
+            <img 
                 src={thumbnail} 
                 alt={title}
-                width={261}
-                height={386}
                 className={styles.thumbnail}
             />
             
