@@ -1,6 +1,7 @@
 
 :root {
   --bg-color: #ffffff;
+  --highlight-color: #751B5C;
   --text-color: #222222;
   --transition-bg: background-color 0.5s ease;
   --transition-color: color 0.3s ease;
