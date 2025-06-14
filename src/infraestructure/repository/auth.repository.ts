@@ -14,8 +14,13 @@ export async function login(credentials: AuthRequestBody): Promise<ApiResponse<L
     })
 
     const data = await response.json()
-
     if (!response.ok) {
+      if(response.status === 500) {
+        return {
+          success: false,
+          error: "Server error",
+        }
+      }
       return {
         success: false,
         error: "User not found",
