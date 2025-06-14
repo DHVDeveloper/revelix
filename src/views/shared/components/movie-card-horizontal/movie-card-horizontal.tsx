@@ -1,8 +1,9 @@
 "use client";
-import { MovieCardHorizontalView } from "@/domain/interfaces/movie";
-import { StarIcon } from "@/ui/icons/star.icon";
-import { useRouter } from "next/navigation";
-import styles from "./movie-card-horizontal.module.css";
+
+import { MovieCardHorizontalView } from "@/domain/entities/movie.entity";
+import { useRouter } from "next/router";
+import { StarIcon } from "../../icons/star.icon";
+import styles from './movie-card-horizontal.module.css'
 
 interface MovieCardHorizontalProps {
   movieInfo: MovieCardHorizontalView;

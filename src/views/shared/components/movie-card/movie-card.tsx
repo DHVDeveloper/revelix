@@ -1,8 +1,8 @@
 'use client'
-import { MovieCardView } from '@/domain/interfaces/movie';
-import { StarIcon } from '@/ui/icons/star.icon';
+import { MovieCardView } from '@/domain/entities/movie.entity';
 import { useRouter } from 'next/navigation';
 import styles from './movie-card.module.css';
+import { StarIcon } from '../../icons/star.icon';
 
 interface MovieCardProps {
     movieInfo: MovieCardView

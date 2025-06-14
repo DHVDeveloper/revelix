@@ -1,0 +1,63 @@
+.container {
+  position: fixed;
+  bottom: 1rem;
+  right: 1rem;
+  z-index: 50;
+}
+
+.alert {
+  min-width: 250px;
+  border-left-width: 3px;
+  border-left-style: solid;
+  padding: 12px 16px;
+  font-weight: 700;
+  border-radius: 4px;
+  color: black;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+}
+
+.neutral {
+  background-color: #f3f4f6; 
+  border-color: #4b5563;
+}
+
+.success {
+  background-color: #d1fae5;
+  border-color: #16a34a;
+}
+
+.danger {
+  background-color: #fee2e2;
+  border-color: #dc2626;
+}
+
+.warning {
+  background-color: #fef3c7;
+  border-color: #ca8a04;
+}
+
+.message {
+  padding-left: 0.25rem;
+}
+
+.closeBtn {
+  font-size: 0.875rem;
+  color: #9ca3af;
+  font-weight: 700;
+  padding: 0.5rem;
+  cursor: pointer;
+  background-color: transparent;
+  font-size: 12px;
+  border: 0;
+  transition: color 0.2s ease-in-out;
+}
+
+.closeBtn:hover {
+  color: #111827;
+}
+
