@@ -7,7 +7,7 @@ export async function POST(request: Request) {
   const { email, password } = await request.json();
 
   try {
-    const response = await fetch(`https://kata.conducerevel.com/films/auth/sign-in`, {
+    const response = await fetch(`${AppConfig.API_BASE_URL}/films/auth/sign-in`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -17,9 +17,11 @@ export async function POST(request: Request) {
     });
 
     if (!response.ok) {
-      const errorMessage =
-        response.status === 502 ? "Invalid credentials" : "Authentication failed";
-      throw new Error(errorMessage);
+      if (response.status === 401 || response.status === 403 || response.status === 502) {
+        return NextResponse.json({ error: "Invalid credentials" }, { status: 401 });
+      } else {
+        return NextResponse.json({ error: "Server error" }, { status: 500 });
+      }
     }
 
     const { token } = await response.json();
@@ -37,13 +39,8 @@ export async function POST(request: Request) {
     });
 
     return NextResponse.json({ status: 200 });
-  } catch (error) {
-    const message =
-      error instanceof Error && error.message === "Invalid credentials"
-        ? "Invalid credentials"
-        : "Authentication failed";
-
-    return NextResponse.json({ error: message }, { status: 401 });
+  } catch {
+    return NextResponse.json({ error: "Server error" }, { status: 500 });
   }
 }
 
