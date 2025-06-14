@@ -1,16 +1,21 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Roboto, Roboto_Condensed } from 'next/font/google';
 import "./globals.css";
-import { ThemeProvider } from "@/context/theme/theme.provider";
+import { AlertProvider } from "@/views/shared/context/alert/alert.provider";
+import { ThemeProvider } from "@/views/shared/context/theme/theme.provider";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
+export const roboto = Roboto({
+  subsets: ['latin'],
+  weight: ['300', '400', '500', '700'],
+  variable: '--font-roboto',
+  display: 'swap',
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
+export const roboto_condensed = Roboto_Condensed({
+  subsets: ['latin'],
+  weight: ['300', '400', '700'],
+  variable: '--font-roboto-condensed',
+  display: 'swap',
 });
 
 export const metadata: Metadata = {
@@ -25,8 +30,8 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="es" data-theme="dark">
-      <body className={`${geistSans.variable} ${geistMono.variable}`}>
-        <ThemeProvider>{children}</ThemeProvider>
+      <body className={`${roboto.variable} ${roboto_condensed.variable}`}>
+        <ThemeProvider><AlertProvider>{children}</AlertProvider></ThemeProvider>
       </body>
     </html>
   );
