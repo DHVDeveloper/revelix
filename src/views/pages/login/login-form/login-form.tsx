@@ -4,6 +4,7 @@ import { authServices } from "@/application/service/auth.service"
 import { useAlertContext } from "@/views/shared/context/alert/alert.context"
 import { useState } from "react"
 import styles from "./login-form.module.css"
+import { useRouter } from "next/navigation"
 
 
 export function LoginForm() {
@@ -11,11 +12,12 @@ export function LoginForm() {
   const [password, setPassword] = useState("")
   const [isLoading, setIsLoading] = useState(false)
   const {showAlert} = useAlertContext()
+  const router = useRouter()
 
   const handleSubmit = async (e: React.FormEvent) => {
     setIsLoading(true)
     e.preventDefault()
-    
+
     const authResponse = await authServices.login(email,password)
 
     if(!authResponse.success) {
@@ -23,8 +25,8 @@ export function LoginForm() {
       setIsLoading(false)
       return
     }
-
     showAlert({message: 'You have logged in successfully!', type: 'success'})
+    router.push('/')
     setIsLoading(false)
   }
 

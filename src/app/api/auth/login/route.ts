@@ -31,7 +31,7 @@ export async function POST(request: Request) {
     clientCookies.set({
       name: AppConfig.COOKIE_NAME,
       value: token,
-      httpOnly: true,
+      httpOnly: false,
       secure: process.env.NODE_ENV === "production",
       sameSite: "strict",
       path: "/",

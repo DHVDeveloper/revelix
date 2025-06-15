@@ -1,0 +1,151 @@
+.header {
+    width: 100%;
+    height: 600px;
+    color: white;
+    padding: 16px;
+    display: flex;
+    align-items: center;
+    background-size: cover;
+    background-position: top;
+    background-repeat: no-repeat;
+    position: relative;
+}
+
+.header::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.2);
+    z-index: 1;
+}
+
+
+.movieDetails {
+    width: 100%;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    width: 343px;
+    gap: 8px;
+    z-index: 2;
+    transition: opacity 0.5s ease-in-out;
+}
+
+.fadeIn {
+    opacity: 1;
+}
+
+.fadeOut {
+    opacity: 0;
+}
+
+
+.title {
+    font-size: 54px;
+    font-weight: 700;
+    line-height: 54px;
+    width: 80%;
+    text-transform: uppercase;
+}
+
+.description {
+    font-size: 16px;
+    display: -webkit-box;
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    color: white;
+    margin-top: 9px;
+    margin-bottom: 11px;
+    margin-left: 1px;
+    padding-right: 1px;
+}
+
+.button {
+    font-size: 24px;
+    background-color: var(--highlight-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 200px;
+    height: 40px;
+    border: 0;
+    color: white;
+    border-radius: 16px;
+    cursor: pointer;
+    z-index: 2;
+}
+
+.sliderControls {
+    position: absolute;
+    bottom: 20px;
+    left: 0;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    gap: 10px;
+    z-index: 2;
+}
+
+.sliderDot {
+    width: 60px;
+    height: 6px;
+    border-radius: 8px;
+    background-color: rgba(0, 0, 0, 0.7);
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    transition: background-color 0.3s ease;
+}
+
+.sliderDot.active {
+    background-color: rgba(255, 255, 255, 0.7);
+}
+
+@media (min-width: 768px) {
+    .header{
+        padding: 32px;
+    }
+    .movieDetails {
+        width: 580px;
+        gap: 16px;
+    }
+    .title {
+        font-size: 76px;
+        line-height: 75px;
+        width: 70%;
+    }
+    .description {
+        font-size: 24px;
+    }
+    .sliderDot {
+        width: 90px;
+    }
+}
+
+@media (min-width: 1440px) {
+    .header{
+        height: 800px;
+        padding: 120px;
+    }
+    .movieDetails {
+        width: 590px;
+        gap: 24px;
+    }
+    .title {
+        font-size: 128px;
+        line-height: 130px;
+        width: 100%;
+    }
+    .button {
+        width: 343px;
+        height: 57px;
+    }
+    .description {
+        font-size: 24px;
+    }
+}
