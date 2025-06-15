@@ -1,11 +1,12 @@
 'use client'
-import { MovieCardView } from '@/domain/entities/movie.entity';
+import { Movie } from '@/domain/entities/movie.entity';
 import { useRouter } from 'next/navigation';
+import { StarIcon } from '../../../icons/star.icon';
 import styles from './movie-card.module.css';
-import { StarIcon } from '../../icons/star.icon';
+import { FallbackImage } from '../../fallback-image/fallback-image';
 
 interface MovieCardProps {
-    movieInfo: MovieCardView
+    movieInfo: Movie
 }
 
 export function MovieCard({movieInfo}: MovieCardProps) {
@@ -19,7 +20,7 @@ export function MovieCard({movieInfo}: MovieCardProps) {
 
     return (
         <div className={styles.card} onClick={handleRedirectMovieDetail}>
-            <img 
+            <FallbackImage 
                 src={thumbnail} 
                 alt={title}
                 className={styles.thumbnail}
@@ -35,7 +36,7 @@ export function MovieCard({movieInfo}: MovieCardProps) {
                 <div className={styles.info}>
                     <div className={styles.rating}>
                         <span className={styles.starIcon}><StarIcon/></span>
-                        <span>{rating.toFixed(1)}</span>
+                        <span>{rating}</span>
                     </div>
                     <span className={styles.genre}>{genre}</span>
                 </div>

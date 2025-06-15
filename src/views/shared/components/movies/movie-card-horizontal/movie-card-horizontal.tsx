@@ -1,12 +1,13 @@
 "use client";
 
-import { MovieCardHorizontalView } from "@/domain/entities/movie.entity";
+import { Movie } from "@/domain/entities/movie.entity";
 import { useRouter } from "next/router";
-import { StarIcon } from "../../icons/star.icon";
-import styles from './movie-card-horizontal.module.css'
+import { StarIcon } from "../../../icons/star.icon";
+import styles from './movie-card-horizontal.module.css';
+import { FallbackImage } from "../../fallback-image/fallback-image";
 
 interface MovieCardHorizontalProps {
-  movieInfo: MovieCardHorizontalView;
+  movieInfo: Movie;
 }
 
 export function MovieCardHorizontal({ movieInfo }: MovieCardHorizontalProps) {
@@ -20,7 +21,7 @@ export function MovieCardHorizontal({ movieInfo }: MovieCardHorizontalProps) {
 
   return (
     <div className={styles.card} onClick={handleRedirectMovieDetail}>
-      <img
+      <FallbackImage
         src={poster}
         alt={title}
         className={styles.thumbnail}
@@ -42,7 +43,7 @@ export function MovieCardHorizontal({ movieInfo }: MovieCardHorizontalProps) {
             <span className={styles.starIcon}>
               <StarIcon />
             </span>
-            <span>{rating.toFixed(1)}</span>
+            <span>{rating}</span>
           </div>
           <span className={styles.genre}>{genre}</span>
         </div>
