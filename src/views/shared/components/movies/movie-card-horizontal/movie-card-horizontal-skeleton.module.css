@@ -1,0 +1,6 @@
+.card {
+    height: 260px;
+    min-width: 400px;
+    background-color: var(--skeleton-color);
+    border-radius: 16px;
+}
