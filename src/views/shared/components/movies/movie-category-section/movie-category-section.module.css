@@ -70,6 +70,24 @@
     border-bottom-left-radius: 4px;
 }
 
+.noData {
+    background-color: var(--skeleton-color);
+    color: var(---text-color);
+    border-radius: 16px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.verticalNoData {
+    height: 386px;
+    min-width: 261px;
+}
+
+.horizontalNoData {
+    height: 260px;
+    min-width: 400px;
+}
+
 @media (min-width: 768px) { 
     .title {
         font-size: 60px;

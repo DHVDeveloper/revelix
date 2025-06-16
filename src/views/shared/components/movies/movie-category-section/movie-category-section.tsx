@@ -66,14 +66,14 @@ export function MovieCategorySection({
           ref={sliderRef}
           onScroll={checkScrollPosition}
         >
-          {movieList.map((movie, i) => {
+          {movieList.length > 0 ? movieList.map((movie, i) => {
             if (movieDisplayType === "vertical") {
               return <MovieCard key={i} movieInfo={movie} />
             }
             if (movieDisplayType === "horizontal") {
               return <MovieCardHorizontal key={i} movieInfo={movie} />
             }
-          })}
+          }) : <div className={`${styles.noData} ${movieDisplayType === 'horizontal' ? styles.horizontalNoData : styles.verticalNoData}`}>No movies available</div>}
         </div>
         {(showRightArrow && isHovered) && (
           <button
