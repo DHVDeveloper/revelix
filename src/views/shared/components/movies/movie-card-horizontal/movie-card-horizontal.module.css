@@ -1,7 +1,7 @@
 .card {
     position: relative;
     height: 260px;
-    width: 400px;
+    min-width: 400px;
     border-radius: 16px;
     overflow: hidden;
     transition: all 0.3s ease;
@@ -66,6 +66,7 @@
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+    text-transform: uppercase;
 }
 
 .info {

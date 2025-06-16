@@ -1,0 +1,26 @@
+.button {
+    width: 125px;
+    height: 46px;
+    border: 0;
+    color: var(--button-text-color);
+    background-color: var(--skeleton-color);
+    border-radius: 16px;
+}
+
+@media (min-width: 768px) { 
+    .title {
+        margin-left: 32px;
+    }
+}
+
+@media (min-width: 1440px) {
+    .title {
+        margin-left: 120px;
+    }
+}
+
+@media (min-width: 1660px) {
+    .title {
+        margin-left: 130px;
+    }
+}

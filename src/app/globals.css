@@ -1,18 +1,28 @@
 
 :root {
   --bg-color: #ffffff;
-  --button-bg-color: #222222;
   --highlight-color: #751B5C;
+  --highlight-hover-color: #521340;
+  --highlight-active-color: #3f0d31;
   --text-color: #222222;
   --transition-bg: background-color 0.5s ease;
   --transition-color: color 0.3s ease;
+  --skeleton-color: #d6d6d6;
   --animate-pulse: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  --button-bg-color: #222222;
+  --button-bg-hover-color: #2e2e2e;
+  --button-bg-active-color: #434343;
+  --button-text-color: #ffffff;
 }
 
 [data-theme="dark"] {
-  --button-bg-color: #ffffff;
+  --skeleton-color: #3d3d3d;
   --bg-color: #222222;
   --text-color: #ffffff;
+  --button-bg-color: #ffffff;
+  --button-bg-hover-color: #cccccc;
+  --button-bg-active-color: #9f9f9f;
+  --button-text-color: #000000;
 }
 
 html,

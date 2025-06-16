@@ -4,9 +4,6 @@ import { ApiResponse } from "@/types/api-response.interface"
 import { MovieResponse } from "../interfaces/movie-response"
 import { apiFetch } from "@/utils/fetch"
 
-
-
-
 export async function getMovies(): Promise<ApiResponse<MovieResponse[]>> {
   try {
     const response = await apiFetch(`${AppConfig.API_BASE_URL}/films/movies`)
@@ -75,6 +72,31 @@ export async function getMoviesByGenreId(
     return {
       success: true,
       data: data as MovieResponse[],
+    }
+  } catch {
+    return {
+      success: false,
+      error: "Server error",
+    }
+  }
+}
+
+
+export async function getUserMovies(): Promise<ApiResponse<string[]>> {
+  try {
+    const response = await apiFetch(`${AppConfig.API_BASE_URL}/films/user`)
+    if (!response.ok) {
+      return {
+        success: false,
+        error: "Error getting movies user movies",
+      }
+    }
+
+    const data = await response.json()
+
+    return {
+      success: true,
+      data: data as string[],
     }
   } catch {
     return {
