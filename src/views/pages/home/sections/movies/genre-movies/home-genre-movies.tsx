@@ -1,21 +1,24 @@
-import { genreServices } from "@/application/service/genre.service"
 import { movieServices } from "@/application/service/movie.service"
 import { Genre } from "@/domain/entities/genre.entity"
 import { Movie } from "@/domain/entities/movie.entity"
 import { mapMovieListByGenreList } from "@/domain/mapper/movie.mapper"
 import { MovieCategorySection } from "@/views/shared/components/movies/movie-category-section/movie-category-section"
+import { MovieCategorySectionSkeleton } from "@/views/shared/components/movies/movie-category-section/movie-category-section-skeleton"
 import { useEffect, useState } from "react"
 import styles from "./home-genre-movies.module.css"
 import { HomeGenreMoviesSkeleton } from "./skeleton/home-genre-movies-skeleton"
-import { MovieCategorySectionSkeleton } from "@/views/shared/components/movies/movie-category-section/movie-category-section-skeleton"
 
 export interface MoviesByGenre {
   genreName: string
   movies: Movie[]
 }
 
-export function HomeGenreMovies() {
-  const [genreList, setGenreList] = useState<Genre[]>([])
+interface HomeGenreMoviesProps {
+  genreList: Genre[]
+}
+
+export function HomeGenreMovies({genreList}:HomeGenreMoviesProps) {
+  const [genreListToShow, setGenreListToShow] = useState<Genre[]>([])
   const [isLoading, setIsLoading] = useState(true)
   const [isLoadingFilters, setIsLoadingFilters] = useState(false)
   const [moviesByCategoryList, setMoviesByCategoryList] = useState<
@@ -24,23 +27,19 @@ export function HomeGenreMovies() {
   const [activeGenreId, setActiveGenreId] = useState<string | null>(null)
 
   useEffect(() => {
+    setGenreListToShow(genreList)
     const getData = async () => {
       setIsLoading(true)
       try {
-        const genreListResponse = await genreServices.genres()
-        const genres = genreListResponse.data || []
-
-        if (genres.length === 0) return
-
-        setGenreList(genres)
-        await fetchAllMoviesByGenreList(genres)
+        setGenreListToShow(genreList)
+        await fetchAllMoviesByGenreList(genreList)
       } finally {
         setIsLoading(false)
       }
     }
 
     getData()
-  }, [])
+  }, [genreList])
 
   const fetchAllMoviesByGenreList = async (genres: Genre[]) => {
     const moviesByGenre: MoviesByGenre[] = await Promise.all(
@@ -60,7 +59,7 @@ export function HomeGenreMovies() {
   const fetchMoviesByGenreId = async (genre: Genre) => {
     const moviesResponse = await movieServices.moviesByGenreId(genre.id)
     const movies = moviesResponse.data
-      ? mapMovieListByGenreList(moviesResponse.data, genreList)
+      ? mapMovieListByGenreList(moviesResponse.data, genreListToShow)
       : []
 
     setMoviesByCategoryList([
@@ -76,7 +75,7 @@ export function HomeGenreMovies() {
     setIsLoadingFilters(true)
 
     if (isSameGenre) {
-      await fetchAllMoviesByGenreList(genreList)
+      await fetchAllMoviesByGenreList(genreListToShow)
       setActiveGenreId(null)
     } else {
       await fetchMoviesByGenreId(genre)
@@ -91,7 +90,7 @@ export function HomeGenreMovies() {
   return (
     <div className="animate-fade-in">
       <div className={styles.genreButtonContainer}>
-        {genreList.map((genre) => (
+        {genreListToShow.map((genre) => (
           <button
             key={genre.id}
             disabled={isLoadingFilters}
