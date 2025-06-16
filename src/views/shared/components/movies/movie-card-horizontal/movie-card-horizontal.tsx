@@ -1,10 +1,10 @@
 "use client";
 
 import { Movie } from "@/domain/entities/movie.entity";
-import { useRouter } from "next/router";
 import { StarIcon } from "../../../icons/star.icon";
 import styles from './movie-card-horizontal.module.css';
 import { FallbackImage } from "../../fallback-image/fallback-image";
+import { useRouter } from "next/navigation";
 
 interface MovieCardHorizontalProps {
   movieInfo: Movie;
