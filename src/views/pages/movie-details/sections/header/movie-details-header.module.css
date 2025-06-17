@@ -1,0 +1,106 @@
+.header {
+    width: 100%;
+    height: 600px;
+    color: white;
+    padding: 16px;
+    display: flex;
+    align-items: center;
+    background-size: cover;
+    background-position: top;
+    background-repeat: no-repeat;
+    position: relative;
+}
+
+.header::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.2);
+    z-index: 1;
+}
+
+.buttonsSection {
+    display: none;
+    position: absolute;
+    bottom: 0;
+    z-index: 2;
+    width: 100%;
+    padding-bottom: 32px;
+    padding-right: 130px;
+}
+
+.buttonsContainer {
+    width: 100%;
+    display: flex;
+    justify-content: end;
+    gap: 16px;
+    flex-wrap: nowrap;
+}
+
+.button {
+    width: 343px;
+    height: 57px;
+    font-size: 24px;
+}
+
+.buttonBackToList {
+  border: none;
+  width: 130px;
+  border-radius: 30px;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 0 10px;
+  cursor: pointer;
+  position: absolute;
+  top: 25px;
+  left: 25px;
+  z-index: 3;
+  transition:
+    background-color 0.3s ease,
+    color 0.3s ease,
+    transform 0.2s ease,
+    box-shadow 0.3s ease;
+}
+
+.buttonBackToList svg {
+  width: 15px;
+  height: 15px;
+  transition: width 0.3s ease, height 0.3s ease;
+  transform: rotate(180deg);
+}
+
+.buttonBackToList:hover {
+  background-color: var(--highlight-color);
+  color: white;
+  transform: scale(1.05);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.buttonBackToList:hover svg {
+  height: 18px;
+  width: 18px;
+}
+
+@media (min-width: 1440px) { 
+    .header {
+        height: 800px;
+    }
+    .buttonsSection {
+        display: block;
+        padding-right: 120px;
+    }
+}
+
+@media (min-width: 1660px) { 
+    .buttonsSection {
+        padding-right: 130px;
+    }
+}
