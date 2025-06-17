@@ -3,41 +3,29 @@
     height: 394px;
     width: 343px;
     border-radius: 16px;
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
     padding: 0 8px;
 }
-
+.fieldsContainer {
+    margin-top: 108px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 16px;
+}
 .button {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 16px;
-  font-size: 0.875rem;
-  color: white;
-  background-color: var(--highlight-color);
-  height: 44px;
-  border: none;
-  transition: all 0.2s;
-  cursor: pointer;
-  width: 100%;
-}
-
-.button:hover {
-  background-color: #61164a;
-}
-
-button .disabled {
-  opacity: 0.5;
-  cursor: default;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    background-color: var(--highlight-color);
+    height: 44px;
+    font-weight: 400;
+    width: 100%;
 }
 
 .loading {
-  background-color: #d6d6d6;
+    background-color: #d6d6d6;
 }
 
 .input {
@@ -47,7 +35,7 @@ button .disabled {
     background-color: #201c1c;
     color: white;
     border: 1px solid var(--highlight-color);
-    border-radius: 6px;
+    border-radius: 8px;
     outline: none;
     font-size: 16px;
 }
@@ -61,7 +49,7 @@ button .disabled {
 
 @media (min-width: 768px) { 
     .mainContainer {
-        width: 353px;
+        width: 352px;
         padding: 0 16px;
     }
 }
