@@ -7,6 +7,11 @@
     transition: color 0.3s ease, background-color 0.3s ease;
 }
 
+.button:disabled {
+  pointer-events: none;
+  cursor: default;
+}
+
 .basicButton:hover {
     background-color: var(--button-bg-hover-color);
 }
@@ -15,9 +20,12 @@
     background-color: var(--button-bg-active-color);
 }
 
+.basicButton:disabled {
+    background-color: var( --highlight-active-color);
+}
+
 .highlightButton {
     color: white;
-    font-weight: 700;
     background-color: var( --highlight-color);
 }
 
@@ -26,5 +34,9 @@
 }
 
 .highlightButton:active {
+    background-color: var( --highlight-active-color);
+}
+
+.highlightButton:disabled {
     background-color: var( --highlight-active-color);
 }
