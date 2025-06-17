@@ -1,0 +1,24 @@
+.main {
+    width: 100%;
+    height: 40vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.errorTitle {
+    text-align: center;
+    padding-left: 10px;
+    padding-right: 10px;
+    font-size: 40px;
+    color: var(--text-color)
+}
+
+.errorSubtitle {
+    text-align: center;
+    padding-left: 10px;
+    padding-right: 10px;
+    font-size: 16px;
+    color: var(--button-bg-active-color)
+}
