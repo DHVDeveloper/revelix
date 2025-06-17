@@ -8,8 +8,12 @@ import { useClickOutside } from "@/hooks/use-click-outside"
 import { authServices } from "@/application/service/auth.service"
 import { useAlertContext } from "../../context/alert/alert.context"
 import { useRouter } from "next/navigation"
+import { useThemeContext } from "../../context/theme/theme.context"
+import { MoonIcon } from "../../icons/moon.icon"
+import { SunIcon } from "../../icons/sun.icon"
 
 export function Header() {
+  const {theme, toggleTheme} = useThemeContext()
   const [isSignOutOpen, setIsSignOutOpen] = useState(false)
   const [isAnimating, setIsAnimating] = useState(false)
   const userSectionRef = useRef<HTMLDivElement>(null)
@@ -49,11 +53,14 @@ export function Header() {
         return
     }
     router.push("/login")
-    setIsLoading(false)
   }
 
   return (
     <div className={styles.main}>
+      <button onClick={toggleTheme} className={`${utils.button} ${styles.themeButton}`}>
+        {theme === 'dark' ? <MoonIcon/> : <SunIcon/>}
+      </button>
+
       <div ref={userSectionRef} className={styles.userSection}>
         <div className={styles.imageContainer} onClick={handleToggleSignOut}>
           <Image

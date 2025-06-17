@@ -5,6 +5,7 @@
     width: 100%;
     display: flex;
     justify-content: end;
+    gap: 15px;
     align-items: center;
     padding-right: 16px;
     padding-top: 7px;
@@ -16,6 +17,7 @@
     align-items: end;
     flex-direction: column;
     gap: 24px;
+    position: relative;
 }
 
 .imageContainer {
@@ -39,7 +41,24 @@
     width: 343px;
     height: 57px;
     justify-content: center;
+    position: absolute;
     align-items: center;
     font-size: 24px;
+    top: 77px;
     font-weight: 400;
+}
+
+.themeButton {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 30px;
+    width: 30px;
+    border-radius: 100px;
+    color: white;
+}
+
+.themeButton svg {
+    height: 15px;
+    width: 15px;
 }

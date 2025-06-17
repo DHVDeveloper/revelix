@@ -11,7 +11,6 @@ export function MoonIcon(props: React.SVGProps<SVGSVGElement>) {
       {...props}
     >
       <path
-        fill="none"
         stroke="currentColor"
         strokeLinecap="round"
         strokeLinejoin="round"
