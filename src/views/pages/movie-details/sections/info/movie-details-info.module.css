@@ -1,0 +1,140 @@
+.main {
+    padding-top: 43px;
+    padding-bottom: 40px;
+    padding-left: 16px;
+    padding-right: 16px;
+}
+
+.buttonSection {
+    display: block;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin-bottom: 32px;
+}
+
+.button {
+    width: 343px;
+    border: 0;
+    border-radius: 16px;
+    height: 57px;
+    font-size: 24px;
+}
+
+.buttonTrailer {
+    background-color: #ffffff;
+    color: #000000;
+}
+
+.buttonPlay {
+    background-color: var(--highlight-color);
+    color: #ffffff;
+}
+
+.myListSection {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    gap: 16px;
+    font-weight: 700;
+    margin-bottom: 16px;
+    width: fit-content;
+    cursor: pointer;
+}
+
+.myListSection svg {
+    transition: transform 0.3s ease;
+    border-radius: 8px;
+    width: 40px;
+    height: 40px;
+    color: var(--highlight-color);
+}
+
+.myListSection svg:hover {
+    transform: scale(1.1);   
+}
+
+.details {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 34px;
+}
+
+.categoryDetails {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    font-weight: 700;
+    margin-right: 8px;
+}
+
+.categoryStar {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    color: white;
+}
+
+.categoryStar svg {
+    color: #ffb655;
+}
+
+.categoryDetailsData {
+    font-weight: 500;
+}
+
+.title {
+    color: var(--text-color);
+    text-transform: uppercase;
+    font-weight: 700;
+    font-size: 54px;
+    margin-bottom: 16px;
+}
+
+.sinopsis {
+    color: var(--text-color);
+    font-size: 24px;
+}
+
+
+@media (min-width: 768px) { 
+    .main {
+        padding-top: 40px;
+        padding-left: 32px;
+        padding-right: 32px;
+    }
+    .title {
+        font-size: 76px;
+        margin-bottom: 32px;
+    }
+}
+
+@media (min-width: 1440px) {
+    .main {
+        padding-left: 120px;
+        padding-right: 120px;
+    }
+    .buttonSection {
+        display: none;
+    }
+    .myListSection {
+        gap: 10px;
+        margin-bottom: 24px;
+    }
+    .details {
+        margin-bottom: 42px;
+    }
+    .title {
+        font-size: 128px;
+        margin-bottom: 34px;
+        line-height: 130px;
+    }
+}
+
+@media (min-width: 1660px) { 
+    .main {
+        padding-left: 130px;
+        padding-right: 130px;
+    }
+}
