@@ -5,6 +5,7 @@
     border-radius: 16px;
     padding: 0 8px;
 }
+
 .fieldsContainer {
     margin-top: 108px;
     display: flex;
@@ -13,7 +14,9 @@
     align-items: center;
     gap: 16px;
 }
+
 .button {
+    font-family: var(--font-roboto) !important;
     display: inline-flex;
     align-items: center;
     justify-content: center;
@@ -41,6 +44,7 @@
 }
 
 .input::placeholder {
+    font-family: var(--font-roboto);
     color: white;
     font-weight: 700;
     opacity: 1;

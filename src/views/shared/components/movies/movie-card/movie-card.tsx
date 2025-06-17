@@ -35,10 +35,15 @@ export function MovieCard({movieInfo}: MovieCardProps) {
                 <h3 className={styles.title}>{title}</h3>
                 
                 <div className={styles.info}>
-                    <div className={styles.rating}>
-                        <span className={styles.starIcon}><StarIcon/></span>
-                        <span>{rating}</span>
-                    </div>
+                    {rating ? 
+                        <div className={styles.rating}>
+                            <StarIcon/>
+                            <span>{rating}</span>
+                        </div> : 
+                        <div className={styles.rating}>
+                            {'N/A'}
+                        </div>
+                    }
                     <span className={styles.genre}>{genre}</span>
                 </div>
             </div>
