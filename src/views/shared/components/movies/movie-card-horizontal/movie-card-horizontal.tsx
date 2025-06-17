@@ -5,6 +5,7 @@ import { StarIcon } from "../../../icons/star.icon";
 import styles from './movie-card-horizontal.module.css';
 import { FallbackImage } from "../../fallback-image/fallback-image";
 import { useRouter } from "next/navigation";
+import { TrophyIcon } from "@/views/shared/icons/trophy.icon";
 
 interface MovieCardHorizontalProps {
   movieInfo: Movie;
@@ -16,7 +17,7 @@ export function MovieCardHorizontal({ movieInfo }: MovieCardHorizontalProps) {
   const router = useRouter()
 
   const handleRedirectMovieDetail = () => {
-    router.push(id)
+    router.push('movies/' + id)
   };
 
   return (
@@ -30,7 +31,7 @@ export function MovieCardHorizontal({ movieInfo }: MovieCardHorizontalProps) {
       <div className={styles.overlay}>
         {highlighted && (
           <div className={styles.favoriteIcon}>
-            <StarIcon />
+            <TrophyIcon />
           </div>
         )}
 

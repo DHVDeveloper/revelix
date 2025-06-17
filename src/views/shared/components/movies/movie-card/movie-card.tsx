@@ -4,6 +4,7 @@ import { useRouter } from 'next/navigation';
 import { StarIcon } from '../../../icons/star.icon';
 import styles from './movie-card.module.css';
 import { FallbackImage } from '../../fallback-image/fallback-image';
+import { TrophyIcon } from '@/views/shared/icons/trophy.icon';
 
 interface MovieCardProps {
     movieInfo: Movie
@@ -15,7 +16,7 @@ export function MovieCard({movieInfo}: MovieCardProps) {
     const router = useRouter()
 
     const handleRedirectMovieDetail = () => {
-        router.push(id)
+        router.push('movies/' + id)
     }
 
     return (
@@ -28,7 +29,7 @@ export function MovieCard({movieInfo}: MovieCardProps) {
             
             <div className={styles.overlay}>
                 {highlighted && (
-                    <div className={styles.favoriteIcon}><StarIcon/></div>
+                    <div className={styles.favoriteIcon}><TrophyIcon/></div>
                 )}
                 
                 <h3 className={styles.title}>{title}</h3>
