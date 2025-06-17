@@ -18,3 +18,13 @@ export async function getCookie(name: string): Promise<string | null> {
     return cookieName?.value ?? null
   }
 }
+
+export async function deleteCookie(name: string) {
+  if (typeof window !== "undefined") {
+    document.cookie = `${name}=; Max-Age=0; path=/;`;
+  } else {
+    const { cookies } = await import("next/headers")
+    const cookieStore = await cookies()
+    cookieStore.delete(name)
+  }
+}
