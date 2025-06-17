@@ -4,6 +4,7 @@ import { authServices } from "@/application/service/auth.service"
 import { useAlertContext } from "@/views/shared/context/alert/alert.context"
 import { useState } from "react"
 import styles from "./login-form.module.css"
+import utils from "@/views/shared/styles/utils.module.css"
 import { useRouter } from "next/navigation"
 
 
@@ -32,9 +33,11 @@ export function LoginForm() {
 
   return (
     <form onSubmit={handleSubmit} className={styles.mainContainer}>
-      <input className={styles.input} required onChange={(e) => setEmail(e.target.value)} placeholder="Username" type="email" />
-      <input className={styles.input} required onChange={(e) => setPassword(e.target.value)} placeholder="Password" type="password" />
-      <button disabled={isLoading} className={`${styles.button} ${isLoading ? 'animate-pulse' : ''}`}>{isLoading ? 'Loading...' : 'Sign in'}</button>
+      <div className={styles.fieldsContainer}>
+        <input className={styles.input} required onChange={(e) => setEmail(e.target.value)} placeholder="Username" type="email" />
+        <input className={styles.input} required onChange={(e) => setPassword(e.target.value)} placeholder="Password" type="password" />
+        <button disabled={isLoading} className={`${styles.button} ${utils.button} ${utils.highlightButton} ${isLoading ? 'animate-pulse' : ''}`}>{isLoading ? 'Loading...' : 'Sign in'}</button>
+      </div>
     </form>
   )
 }

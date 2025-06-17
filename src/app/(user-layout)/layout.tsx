@@ -1,4 +1,5 @@
 import { Footer } from "@/views/shared/components/footer/footer";
+import { Header } from "@/views/shared/components/header/header";
 
 export default function WithFooterLayout({
   children,
@@ -7,6 +8,7 @@ export default function WithFooterLayout({
 }) {
   return (
     <>
+      <Header/>
       {children}
       <Footer/>
     </>

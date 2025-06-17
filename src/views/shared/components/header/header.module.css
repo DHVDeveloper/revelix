@@ -1,0 +1,45 @@
+.main {
+    position: absolute;
+    z-index: 3;
+    top: 0;
+    width: 100%;
+    display: flex;
+    justify-content: end;
+    align-items: center;
+    padding-right: 16px;
+    padding-top: 7px;
+}
+
+.userSection {
+    display: flex;
+    justify-content: end;
+    align-items: end;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.imageContainer {
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    height: 46px;
+    width: 46px;
+    border-radius: 100px;
+    background-color: #ffffff80;
+    transition: background-color 0.2s ease-in;
+}
+
+.imageContainer:hover {
+    background-color: #ffffffc5;
+}
+
+.signOutButton {
+    width: 343px;
+    height: 57px;
+    justify-content: center;
+    align-items: center;
+    font-size: 24px;
+    font-weight: 400;
+}
