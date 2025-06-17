@@ -1,3 +1,4 @@
+import { Footer } from "@/views/shared/components/footer/footer";
 
 export default function WithFooterLayout({
   children,
@@ -7,6 +8,7 @@ export default function WithFooterLayout({
   return (
     <>
       {children}
+      <Footer/>
     </>
   );
 }
