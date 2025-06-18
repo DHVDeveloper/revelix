@@ -41,7 +41,7 @@ export function HomeHeader({ movieList }: HomeHeaderProps) {
     router.push(`movies/${selectedMovieId}`)
   }
 
-  if (movieList.length === 0) return <HomeHeaderEmpty/>
+  if (!movieList || movieList.length === 0) return <HomeHeaderEmpty/>
 
   const currentMovie = movieList[currentIndex]
 
