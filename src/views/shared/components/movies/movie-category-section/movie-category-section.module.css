@@ -22,6 +22,7 @@
     display: flex;
     overflow-x: auto;
     padding-left: 16px;
+    padding-right: 16px;
     gap: 24px;
     scrollbar-width: none;
     -ms-overflow-style: none;
@@ -32,6 +33,7 @@
 }
 
 .arrowButton {
+    display: none;
     position: absolute;
     top: 0;
     bottom: 0;
@@ -79,6 +81,7 @@
     justify-content: center;
     align-items: center;
 }
+
 .verticalNoData {
     height: 386px;
     min-width: 261px;
@@ -100,6 +103,7 @@
     }
     
     .arrowButton {
+        display: block;
         width: 80px;
     }
 }

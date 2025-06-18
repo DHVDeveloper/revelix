@@ -6,8 +6,10 @@
 }
 
 .buttonSection {
-    display: block;
     display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
     flex-direction: column;
     gap: 16px;
     margin-bottom: 32px;
@@ -95,7 +97,10 @@
 }
 
 
-@media (min-width: 768px) { 
+@media (min-width: 768px) {
+    .buttonSection {
+        align-items: start;
+    } 
     .main {
         padding-top: 40px;
         padding-left: 32px;
