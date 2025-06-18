@@ -6,14 +6,14 @@ import { ThemeProvider } from "@/views/shared/context/theme/theme.provider";
 import { initializeSlugStore } from "@/lib/slug/slug-store";
 import { movieServices } from "@/application/service/movie.service";
 
-export const roboto = Roboto({
+const roboto = Roboto({
   subsets: ['latin'],
   weight: ['300', '400', '500', '700'],
   variable: '--font-roboto',
   display: 'swap',
 });
 
-export const roboto_condensed = Roboto_Condensed({
+const roboto_condensed = Roboto_Condensed({
   subsets: ['latin'],
   weight: ['300', '400', '700'],
   variable: '--font-roboto-condensed',
