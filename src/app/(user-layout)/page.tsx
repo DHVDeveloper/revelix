@@ -11,7 +11,7 @@ export default async function Home() {
     if (!allMovies.data) {
         return <HomePage discoverMovies={[]} allMovies={[]} genreList={genreList} />
     }
-
+    
     const discoverMovies = [...allMovies.data]
         .sort(() => 0.5 - Math.random())
         .slice(0, 4)
