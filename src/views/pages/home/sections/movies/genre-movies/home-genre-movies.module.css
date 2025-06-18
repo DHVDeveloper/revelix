@@ -21,33 +21,10 @@
     font-size: 18px;
     justify-content: center;
     align-items: center;
-    color: var(--button-text-color);
-    background-color: var(--button-bg-color);
-    border-radius: 16px;
-    cursor: pointer;
-    transition: color 0.3s ease, background-color 0.3s ease;
-}
-
-.genreButton:hover {
-    background-color: var(--button-bg-hover-color);
-}
-
-.genreButton:active {
-    background-color: var(--button-bg-active-color);
 }
 
 .active {
-    color: white;
     font-weight: 700;
-    background-color: var( --highlight-color);
-}
-
-.active:hover {
-    background-color: var( --highlight-hover-color);
-}
-
-.active:active {
-    background-color: var( --highlight-active-color);
 }
 
 @media (min-width: 768px) { 
