@@ -1,6 +1,7 @@
 "use client"
 import { Movie } from "@/domain/entities/movie.entity"
 import styles from "./home-header.module.css"
+import utils from "@/views/shared/styles/utils.module.css"
 import { useState, useEffect } from "react"
 import { useRouter } from "next/navigation"
 import { HomeHeaderEmpty } from "./home-header-empty"
@@ -40,7 +41,7 @@ export function HomeHeader({ movieList }: HomeHeaderProps) {
     router.push(`movies/${selectedMovieId}`)
   }
 
-  if (movieList.length === 0) return <HomeHeaderEmpty/>
+  if (!movieList || movieList.length === 0) return <HomeHeaderEmpty/>
 
   const currentMovie = movieList[currentIndex]
 
@@ -56,7 +57,7 @@ export function HomeHeader({ movieList }: HomeHeaderProps) {
       >
         <h2 className={styles.title}>{currentMovie.title}</h2>
         <p className={styles.description}>{currentMovie.description}</p>
-        <button className={styles.button} onClick={() => handleGoToDetails(currentMovie.id)}>Discover</button>
+        <button className={`${utils.button} ${utils.highlightButton} ${styles.button}`} onClick={() => handleGoToDetails(currentMovie.id)}>Discover</button>
       </div>
 
       <div className={styles.sliderControls}>

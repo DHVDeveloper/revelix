@@ -28,10 +28,11 @@
     color: white;
     display: flex;
     flex-direction: column;
-    width: 343px;
+    width: 100%;
     gap: 8px;
     z-index: 2;
     transition: opacity 0.5s ease-in-out;
+    overflow-x: visible;
 }
 
 .fadeIn {
@@ -42,13 +43,18 @@
     opacity: 0;
 }
 
-
 .title {
     font-size: 54px;
     font-weight: 700;
     line-height: 54px;
-    width: 80%;
+    width: 100%;
     text-transform: uppercase;
+     display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow-y: hidden;
+    overflow-x: hidden;
+    font-family: var(--font-roboto-condensed);
 }
 
 .description {
@@ -67,16 +73,11 @@
 
 .button {
     font-size: 24px;
-    background-color: var(--highlight-color);
     display: flex;
     justify-content: center;
     align-items: center;
     width: 200px;
     height: 40px;
-    border: 0;
-    color: white;
-    border-radius: 16px;
-    cursor: pointer;
     z-index: 2;
 }
 
@@ -111,13 +112,12 @@
         padding: 32px;
     }
     .movieDetails {
-        width: 580px;
+        width: 563px;
         gap: 16px;
     }
     .title {
         font-size: 76px;
         line-height: 75px;
-        width: 70%;
     }
     .description {
         font-size: 24px;
@@ -133,13 +133,14 @@
         padding: 120px;
     }
     .movieDetails {
-        width: 590px;
+        width: 563px;
         gap: 24px;
     }
     .title {
         font-size: 128px;
         line-height: 130px;
-        width: 100%;
+        word-break: break-word;
+        hyphens: auto;
     }
     .button {
         width: 343px;

@@ -1,12 +1,13 @@
 "use client"
 
 import { Movie } from "@/domain/entities/movie.entity"
-import styles from "./movie-details-info.module.css"
 import { StarIcon } from "@/views/shared/icons/star.icon"
 import { PlusIcon } from "@/views/shared/icons/plus.icon"
 import { userServices } from "@/application/service/user.service"
 import { useAlertContext } from "@/views/shared/context/alert/alert.context"
 import { useState } from "react"
+import styles from "./movie-details-info.module.css"
+import utils from "@/views/shared/styles/utils.module.css"
 
 interface MovieDetailsInfoProps {
   movie: Movie
@@ -56,10 +57,10 @@ export function MovieDetailsInfo({ movie, isOnList }: MovieDetailsInfoProps) {
   return (
     <div className={styles.main}>
       <div className={styles.buttonSection}>
-        <button className={`${styles.button} ${styles.buttonTrailer}`}>
+        <button className={`${styles.button} ${utils.button} ${utils.basicButton}`}>
           Trailer
         </button>
-        <button className={`${styles.button} ${styles.buttonPlay}`}>
+        <button className={`${styles.button}  ${utils.button} ${utils.highlightButton}`}>
           Play
         </button>
       </div>
@@ -72,28 +73,34 @@ export function MovieDetailsInfo({ movie, isOnList }: MovieDetailsInfoProps) {
       </div>
 
       <div className={styles.details}>
-        <div className={styles.categoryDetails}>
-          Rating:
+        <div>
+          <span className={styles.categoryDetails}>
+            Rating:
+          </span>
           <span className={styles.categoryStar}>
             {rating && rating > 0 ? (
               Array.from({ length: rating }, (_, i) => (
                 <StarIcon width={20} height={20} key={i} />
               ))
             ) : (
-              <>Not available</>
+              <span className={styles.categoryDetailsData}>Not available</span>
             )}
           </span>
         </div>
 
-        <div className={styles.categoryDetails}>
-          Cast:
+        <div>
+          <span className={styles.categoryDetails}>
+            Cast:
+          </span>
           <span className={styles.categoryDetailsData}>
             {cast?.trim() ? cast : "Not available"}
           </span>
         </div>
 
-        <div className={styles.categoryDetails}>
-          Genre:
+        <div>
+          <span className={styles.categoryDetails}>
+            Genre:
+          </span>
           <span className={styles.categoryDetailsData}>
             {genre?.trim() ? genre : "Not available"}
           </span>

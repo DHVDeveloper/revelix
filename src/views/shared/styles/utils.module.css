@@ -5,6 +5,7 @@
     border-radius: 16px;
     cursor: pointer;
     transition: color 0.3s ease, background-color 0.3s ease;
+    font-family: var(--font-roboto-condensed);
 }
 
 .button:disabled {
@@ -21,7 +22,7 @@
 }
 
 .basicButton:disabled {
-    background-color: var( --highlight-active-color);
+    background-color: var( --button-bg-active-color);
 }
 
 .highlightButton {

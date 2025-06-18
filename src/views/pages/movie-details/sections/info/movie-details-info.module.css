@@ -15,23 +15,12 @@
 
 .button {
     width: 343px;
-    border: 0;
-    border-radius: 16px;
     height: 57px;
     font-size: 24px;
 }
 
-.buttonTrailer {
-    background-color: #ffffff;
-    color: #000000;
-}
-
-.buttonPlay {
-    background-color: var(--highlight-color);
-    color: #ffffff;
-}
-
 .myListSection {
+    font-family: var(--font-roboto-condensed);
     display: flex;
     align-items: center;
     flex-direction: column;
@@ -57,11 +46,18 @@
 .details {
     display: flex;
     flex-direction: column;
+    font-size: 16px;
     gap: 10px;
     margin-bottom: 34px;
 }
 
+.details > div {
+    display: flex;
+    align-items: center;
+}
+
 .categoryDetails {
+    font-family: var(--font-roboto-condensed);
     display: flex;
     gap: 8px;
     align-items: center;
@@ -73,7 +69,7 @@
     display: flex;
     align-items: center;
     gap: 4px;
-    color: white;
+    color: var(--text-color);
 }
 
 .categoryStar svg {
@@ -85,6 +81,7 @@
 }
 
 .title {
+    font-family: var(--font-roboto-condensed);
     color: var(--text-color);
     text-transform: uppercase;
     font-weight: 700;

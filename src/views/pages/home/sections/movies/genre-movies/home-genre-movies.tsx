@@ -6,6 +6,7 @@ import { MovieCategorySection } from "@/views/shared/components/movies/movie-cat
 import { MovieCategorySectionSkeleton } from "@/views/shared/components/movies/movie-category-section/movie-category-section-skeleton"
 import { useEffect, useState } from "react"
 import styles from "./home-genre-movies.module.css"
+import utils from "@/views/shared/styles/utils.module.css"
 import { HomeGenreMoviesSkeleton } from "./skeleton/home-genre-movies-skeleton"
 
 export interface MoviesByGenre {
@@ -95,8 +96,8 @@ export function HomeGenreMovies({genreList}:HomeGenreMoviesProps) {
             key={genre.id}
             disabled={isLoadingFilters}
             onClick={() => handleGenreClick(genre)}
-            className={`${styles.genreButton} ${
-              activeGenreId === genre.id ? styles.active : ""
+            className={`${utils.button} ${utils.basicButton} ${styles.genreButton} ${
+              activeGenreId === genre.id ? utils.highlightButton : ""
             }`}
           >
             {genre.name}
