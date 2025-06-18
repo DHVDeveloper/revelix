@@ -8,13 +8,11 @@ export function FallbackImage({
   alt,
   ...rest
 }: React.ImgHTMLAttributes<HTMLImageElement>) {
-  const [isError, setIsError] = useState(false);
+  const [isError, setIsError] = useState(false)
+  const [isLoading, setIsLoading] = useState(true)
 
-  const handleError = () => {
-    if (!isError) {
-      setIsError(true);
-    }
-  };
+  const handleError = () => setIsError(true)
+  const handleLoad = () => setIsLoading(false)
 
   if (isError) {
     return (
@@ -29,11 +27,11 @@ export function FallbackImage({
       {...rest}
       src={src}
       alt={alt}
-      onError={() => {
-        handleError();
-      }}
+      onError={handleError}
+      onLoad={handleLoad}
       loading="lazy"
       decoding="async"
+      className={`${isLoading ? styles.loading : ''} ${rest.className} `}
     />
   );
 }
