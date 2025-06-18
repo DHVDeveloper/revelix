@@ -9,4 +9,5 @@ export interface MovieResponse {
     genre: string
     availableDate: string
     title: string
+    slug: string
 }

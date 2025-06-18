@@ -13,6 +13,7 @@ export function mapMovieResponseToMovie(movieResponse:MovieResponse): Movie {
         genre: movieResponse.genre,
         availableDate: movieResponse.availableDate,
         title: movieResponse.title,
+        slug: movieResponse.slug
     }
 }
 
