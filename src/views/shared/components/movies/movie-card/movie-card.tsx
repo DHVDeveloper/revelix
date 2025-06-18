@@ -1,22 +1,22 @@
 'use client'
-import { Movie } from '@/domain/entities/movie.entity';
-import { useRouter } from 'next/navigation';
-import { StarIcon } from '../../../icons/star.icon';
-import styles from './movie-card.module.css';
-import { FallbackImage } from '../../fallback-image/fallback-image';
-import { TrophyIcon } from '@/views/shared/icons/trophy.icon';
+import { Movie } from '@/domain/entities/movie.entity'
+import { TrophyIcon } from '@/views/shared/icons/trophy.icon'
+import { useRouter } from 'next/navigation'
+import { StarIcon } from '../../../icons/star.icon'
+import { FallbackImage } from '../../fallback-image/fallback-image'
+import styles from './movie-card.module.css'
 
 interface MovieCardProps {
     movieInfo: Movie
 }
 
 export function MovieCard({movieInfo}: MovieCardProps) {
-    const {id,genre,rating,thumbnail,title, highlighted} = movieInfo
+    const {genre,rating,thumbnail,title, highlighted, slug} = movieInfo
 
     const router = useRouter()
 
     const handleRedirectMovieDetail = () => {
-        router.push('movies/' + id)
+        router.push("movies/" + slug)
     }
 
     return (
@@ -48,5 +48,5 @@ export function MovieCard({movieInfo}: MovieCardProps) {
                 </div>
             </div>
         </div>
-    );
+    )
 }

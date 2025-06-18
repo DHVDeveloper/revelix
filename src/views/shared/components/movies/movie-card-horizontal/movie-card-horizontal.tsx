@@ -12,12 +12,12 @@ interface MovieCardHorizontalProps {
 }
 
 export function MovieCardHorizontal({ movieInfo }: MovieCardHorizontalProps) {
-  const { id, genre, rating, poster, title, description, highlighted } =
+  const { slug, genre, rating, poster, title, description, highlighted } =
     movieInfo
   const router = useRouter()
 
   const handleRedirectMovieDetail = () => {
-    router.push("movies/" + id)
+    router.push("movies/" + slug)
   }
 
   return (
