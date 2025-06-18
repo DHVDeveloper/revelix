@@ -6,13 +6,13 @@ import { MovieDetailsPage } from "@/views/pages/movie-details/movie-details.page
 export default async function MovieDetails({
   params,
 }: {
-  params: Promise<{ movieId: string }>
+  params: Promise<{ movieSlug: string }>
 }) {
-  const { movieId } = await params
+  const { movieSlug } = await params
 
   const [genresRes, movieRes, userMoviesRes] = await Promise.all([
     genreServices.genres(),
-    movieServices.movieById(movieId),
+    movieServices.movieBySlug(movieSlug),
     movieServices.userMovies(),
   ])
 
