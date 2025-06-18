@@ -7,3 +7,7 @@
     background-color: var(--highlight-color);
     color: white;
 }
+
+.loading {
+    opacity: 0;
+}
