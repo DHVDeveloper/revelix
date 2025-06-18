@@ -55,7 +55,7 @@ export function MovieDetailsInfo({ movie, isOnList }: MovieDetailsInfoProps) {
   }
 
   return (
-    <div className={styles.main}>
+    <div className={`${styles.main} animate-fade-in`}>
       <div className={styles.buttonSection}>
         <button className={`${styles.button} ${utils.button} ${utils.basicButton}`}>
           Trailer
