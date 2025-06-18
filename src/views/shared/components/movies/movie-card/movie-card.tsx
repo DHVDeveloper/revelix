@@ -1,10 +1,10 @@
 'use client'
 import { Movie } from '@/domain/entities/movie.entity'
 import { TrophyIcon } from '@/views/shared/icons/trophy.icon'
-import { useRouter } from 'next/navigation'
 import { StarIcon } from '../../../icons/star.icon'
 import { FallbackImage } from '../../fallback-image/fallback-image'
 import styles from './movie-card.module.css'
+import Link from 'next/link'
 
 interface MovieCardProps {
     movieInfo: Movie
@@ -13,14 +13,8 @@ interface MovieCardProps {
 export function MovieCard({movieInfo}: MovieCardProps) {
     const {genre,rating,thumbnail,title, highlighted, slug} = movieInfo
 
-    const router = useRouter()
-
-    const handleRedirectMovieDetail = () => {
-        router.push("movies/" + slug)
-    }
-
     return (
-        <div className={styles.card} onClick={handleRedirectMovieDetail}>
+        <Link href={"movies/" + slug} className={styles.card}>
             <FallbackImage 
                 src={thumbnail} 
                 alt={title}
@@ -47,6 +41,6 @@ export function MovieCard({movieInfo}: MovieCardProps) {
                     <span className={styles.genre}>{genre}</span>
                 </div>
             </div>
-        </div>
+        </Link>
     )
 }

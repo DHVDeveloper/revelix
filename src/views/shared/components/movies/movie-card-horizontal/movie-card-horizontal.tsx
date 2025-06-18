@@ -1,11 +1,11 @@
 "use client"
 
 import { Movie } from "@/domain/entities/movie.entity"
-import { StarIcon } from "../../../icons/star.icon"
-import styles from "./movie-card-horizontal.module.css"
-import { FallbackImage } from "../../fallback-image/fallback-image"
-import { useRouter } from "next/navigation"
 import { TrophyIcon } from "@/views/shared/icons/trophy.icon"
+import Link from "next/link"
+import { StarIcon } from "../../../icons/star.icon"
+import { FallbackImage } from "../../fallback-image/fallback-image"
+import styles from "./movie-card-horizontal.module.css"
 
 interface MovieCardHorizontalProps {
   movieInfo: Movie
@@ -14,14 +14,9 @@ interface MovieCardHorizontalProps {
 export function MovieCardHorizontal({ movieInfo }: MovieCardHorizontalProps) {
   const { slug, genre, rating, poster, title, description, highlighted } =
     movieInfo
-  const router = useRouter()
-
-  const handleRedirectMovieDetail = () => {
-    router.push("movies/" + slug)
-  }
 
   return (
-    <div className={styles.card} onClick={handleRedirectMovieDetail}>
+    <Link href={"movies/" + slug} className={styles.card}>
       <FallbackImage src={poster} alt={title} className={styles.thumbnail} />
 
       <div className={styles.overlay}>
@@ -48,6 +43,6 @@ export function MovieCardHorizontal({ movieInfo }: MovieCardHorizontalProps) {
           <span className={styles.genre}>{genre}</span>
         </div>
       </div>
-    </div>
+    </Link>
   )
 }
