@@ -1,4 +1,4 @@
-import { AlertData } from "@/context/alert/alert.interface"
+import { AlertData } from "../../context/alert/alert.interface"
 import styles from "./alert.module.css"
 
 export function Alert({
