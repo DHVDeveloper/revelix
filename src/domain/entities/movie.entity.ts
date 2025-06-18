@@ -9,6 +9,7 @@ export interface Movie {
     genre: string
     availableDate: string
     title: string
+    slug: string
 }
 
 export type MovieCardView = Pick<Movie, 'id' | 'title' | 'rating' | 'thumbnail' | 'genre' | 'highlighted'>;

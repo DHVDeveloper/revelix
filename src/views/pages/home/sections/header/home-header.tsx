@@ -37,8 +37,8 @@ export function HomeHeader({ movieList }: HomeHeaderProps) {
     }, 500)
   }
 
-  const handleGoToDetails = (selectedMovieId: string) => {
-    router.push(`movies/${selectedMovieId}`)
+  const handleGoToDetails = (selectedMovieSlug: string) => {
+    router.push(`movies/${selectedMovieSlug}`)
   }
 
   if (!movieList || movieList.length === 0) return <HomeHeaderEmpty/>
@@ -57,7 +57,7 @@ export function HomeHeader({ movieList }: HomeHeaderProps) {
       >
         <h2 className={styles.title}>{currentMovie.title}</h2>
         <p className={styles.description}>{currentMovie.description}</p>
-        <button className={`${utils.button} ${utils.highlightButton} ${styles.button}`} onClick={() => handleGoToDetails(currentMovie.id)}>Discover</button>
+        <button className={`${utils.button} ${utils.highlightButton} ${styles.button}`} onClick={() => handleGoToDetails(currentMovie.slug)}>Discover</button>
       </div>
 
       <div className={styles.sliderControls}>

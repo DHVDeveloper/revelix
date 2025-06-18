@@ -3,6 +3,7 @@ import { AppConfig } from "@/lib/environments"
 import { ApiResponse } from "@/types/api-response.interface"
 import { MovieResponse } from "../interfaces/movie-response"
 import { apiFetch } from "@/utils/fetch"
+import { getIdBySlug, getSlugById } from "@/lib/slug/slug-store"
 
 export async function getMovies(): Promise<ApiResponse<MovieResponse[]>> {
   try {
@@ -15,12 +16,36 @@ export async function getMovies(): Promise<ApiResponse<MovieResponse[]>> {
       }
     }
 
-    const data = await response.json()
+    const data:MovieResponse[] = await response.json()
+
+    const moviesWithSlug = data.map((movie) => ({
+      ...movie, slug: getSlugById(movie.id) ?? ""
+    }))
 
     return {
       success: true,
-      data: data as MovieResponse[],
+      data: moviesWithSlug,
     }
+  } catch {
+    return {
+      success: false,
+      error: "Server error",
+    }
+  }
+}
+
+
+export async function getMovieByMovieSlug(movieSlug: string): Promise<ApiResponse<MovieResponse>> {
+  try {
+    const movieId = getIdBySlug(movieSlug)
+    if (!movieId) {
+      return {
+        success: false,
+        error: "Error getting movie by slug",
+      }
+    }
+
+    return await getMovieByMovieId(movieId)
   } catch {
     return {
       success: false,
@@ -40,12 +65,12 @@ export async function getMovieByMovieId(movieId: string): Promise<ApiResponse<Mo
         error: "Error getting movie by movie id",
       }
     }
-
-    const data = await response.json()
+    const data: MovieResponse = await response.json()
+    const movieSlug = getSlugById(data.id)
 
     return {
       success: true,
-      data: data as MovieResponse,
+      data: {...data, slug: movieSlug} as MovieResponse,
     }
   } catch {
     return {
@@ -54,6 +79,7 @@ export async function getMovieByMovieId(movieId: string): Promise<ApiResponse<Mo
     }
   }
 }
+
 
 export async function getMoviesByGenreId(
   genreId: string
@@ -67,11 +93,15 @@ export async function getMoviesByGenreId(
       }
     }
 
-    const data = await response.json()
+    const data: MovieResponse[] = await response.json()
 
+    const moviesWithSlug = data.map((movie) => ({
+      ...movie, slug: getSlugById(movie.id) ?? ""
+    }))
+    
     return {
       success: true,
-      data: data as MovieResponse[],
+      data: moviesWithSlug,
     }
   } catch {
     return {

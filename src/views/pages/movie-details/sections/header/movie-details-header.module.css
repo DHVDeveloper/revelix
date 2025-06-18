@@ -47,46 +47,10 @@
 }
 
 .buttonBackToList {
-  border: none;
-  width: 130px;
-  border-radius: 30px;
-  background-color: var(--bg-color);
-  color: var(--text-color);
-  height: 40px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-  padding: 0 10px;
-  cursor: pointer;
   position: absolute;
   top: 25px;
   left: 25px;
   z-index: 3;
-  transition:
-    background-color 0.3s ease,
-    color 0.3s ease,
-    transform 0.2s ease,
-    box-shadow 0.3s ease;
-}
-
-.buttonBackToList svg {
-  width: 15px;
-  height: 15px;
-  transition: width 0.3s ease, height 0.3s ease;
-  transform: rotate(180deg);
-}
-
-.buttonBackToList:hover {
-  background-color: var(--highlight-color);
-  color: white;
-  transform: scale(1.05);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-}
-
-.buttonBackToList:hover svg {
-  height: 18px;
-  width: 18px;
 }
 
 @media (min-width: 1440px) { 

@@ -3,6 +3,8 @@ import { Roboto, Roboto_Condensed } from 'next/font/google';
 import "./globals.css";
 import { AlertProvider } from "@/views/shared/context/alert/alert.provider";
 import { ThemeProvider } from "@/views/shared/context/theme/theme.provider";
+import { initializeSlugStore } from "@/lib/slug/slug-store";
+import { movieServices } from "@/application/service/movie.service";
 
 export const roboto = Roboto({
   subsets: ['latin'],
@@ -23,11 +25,17 @@ export const metadata: Metadata = {
   description: "Your ultimate platform for exploring movies.",
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  
+  const allMovies = await movieServices.movies()
+  if (allMovies.data) {
+    initializeSlugStore(allMovies.data)
+  }
+
   return (
     <html lang="es" data-theme="dark">
       <body className={`${roboto.variable} ${roboto_condensed.variable}`}>
