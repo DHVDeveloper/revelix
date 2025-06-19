@@ -1,6 +1,7 @@
 import { Footer } from "@/views/shared/components/footer/footer";
 import { Header } from "@/views/shared/components/header/header";
-import styles from "./layout.module.css"
+import styles from "./layout.module.css";
+import { AuthProvider } from "@/views/shared/context/auth/auth.provider";
 
 export default function WithFooterLayout({
   children,
@@ -8,10 +9,12 @@ export default function WithFooterLayout({
   children: React.ReactNode;
 }) {
   return (
-    <div className={styles.main}>
-      <Header/>
-      {children}
-      <Footer/>
-    </div>
+    <AuthProvider>
+      <div className={styles.main}>
+        <Header />
+        {children}
+        <Footer />
+      </div>
+    </AuthProvider>
   );
 }

@@ -6,7 +6,7 @@ import { getMovieByMovieId, getMovieByMovieSlug, getMovies, getMoviesByGenreId, 
 export  const movieServices: MovieServices = {
   moviesByGenreId: async (genreId) => {
     const response = await getMoviesByGenreId(genreId)
-    if (!response.data) {
+    if (!response?.data) {
       return { success: false, error: response.error }
     }
 
@@ -16,7 +16,7 @@ export  const movieServices: MovieServices = {
   movieBySlug: async (movieSlug) => {
     const response = await getMovieByMovieSlug(movieSlug)
 
-    if (!response.data) {
+    if (!response?.data) {
       return response
     }
 
@@ -26,7 +26,7 @@ export  const movieServices: MovieServices = {
   movieById: async (movieId) => {
     const response = await getMovieByMovieId(movieId)
 
-    if (!response.data) {
+    if (!response?.data) {
       return response
     }
 
@@ -36,7 +36,7 @@ export  const movieServices: MovieServices = {
   movies: async () => {
     const response = await getMovies()
 
-    if (!response.data) {
+    if (!response?.data) {
       return response
     }
 
@@ -51,7 +51,7 @@ export  const movieServices: MovieServices = {
   moviesSlug: async () => {
     const response = await getMoviesSlug()
 
-    if (!response.data) {
+    if (!response?.data) {
       return response
     }
 
