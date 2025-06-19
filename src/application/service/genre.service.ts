@@ -6,7 +6,7 @@ export const genreServices: GenreServices = {
   genres: async () => {
     const response = await getGenres()
 
-    if (!response.data) {
+    if (!response?.data) {
       return { success: false, error: response.error }
     }
 

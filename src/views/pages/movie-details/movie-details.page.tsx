@@ -31,7 +31,7 @@ export function MovieDetailsPage({
       try {
         const movieRes = await movieServices.movieBySlug(slug)
 
-        if (movieRes.success && movieRes.data) {
+        if (movieRes?.success && movieRes?.data) {
           const mapped = mapMovieByGenreList(movieRes.data, genreList)
           setMovie(mapped)
 
