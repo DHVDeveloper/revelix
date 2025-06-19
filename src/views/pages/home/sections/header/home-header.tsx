@@ -38,6 +38,7 @@ export function HomeHeader({ movieList }: HomeHeaderProps) {
   }
 
   const handleGoToDetails = (selectedMovieSlug: string) => {
+    if(!selectedMovieSlug || selectedMovieSlug === "") return
     router.push(`movies/${selectedMovieSlug}`)
   }
 

@@ -1,19 +1,22 @@
-import { Movie } from "@/domain/entities/movie.entity"
 import { generateSlugMaps } from "./slug-generator"
 
-let idToSlugMap: Map<string, string> = new Map()
-let slugToIdMap: Map<string, string> = new Map()
+let idToSlugMap: Map<string, string> | null = null
+let slugToIdMap: Map<string, string> | null = null
 
-export const initializeSlugStore = (movies: Movie[]) => {
-  const { slugToId, idToSlug } = generateSlugMaps(movies)
-  slugToIdMap = slugToId
-  idToSlugMap = idToSlug
+export const initializeSlugStore = async () => {
+  if (idToSlugMap && slugToIdMap) return
+
+  const result = await generateSlugMaps()
+  if (!result) return
+
+  slugToIdMap = result.slugToId
+  idToSlugMap = result.idToSlug
 }
 
 export const getSlugById = (id: string): string | undefined => {
-  return idToSlugMap.get(id)
+  return idToSlugMap?.get(id)
 }
 
 export const getIdBySlug = (slug: string): string | undefined => {
-  return slugToIdMap.get(slug)
+  return slugToIdMap?.get(slug)
 }

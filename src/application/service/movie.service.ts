@@ -1,7 +1,7 @@
 
 import { MovieServices } from "@/domain/port/movie-service.port"
 import { mapMovieResponseListToMovieList, mapMovieResponseToMovie } from "@/infraestructure/mapper/movie.mapper"
-import { getMovieByMovieId, getMovieByMovieSlug, getMovies, getMoviesByGenreId, getUserMovies } from "@/infraestructure/repository/movie.repository"
+import { getMovieByMovieId, getMovieByMovieSlug, getMovies, getMoviesByGenreId, getMoviesSlug, getUserMovies } from "@/infraestructure/repository/movie.repository"
 
 export  const movieServices: MovieServices = {
   moviesByGenreId: async (genreId) => {
@@ -46,5 +46,15 @@ export  const movieServices: MovieServices = {
   userMovies: async () => {
     const response = await getUserMovies()
     return response
+  },
+
+  moviesSlug: async () => {
+    const response = await getMoviesSlug()
+
+    if (!response.data) {
+      return response
+    }
+
+    return {...response, data: mapMovieResponseListToMovieList(response.data)}
   }
 }

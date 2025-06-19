@@ -1,4 +1,4 @@
-import { Movie } from "@/domain/entities/movie.entity"
+import { movieServices } from "@/application/service/movie.service"
 
 
 const slugify = (title: string): string => {
@@ -10,12 +10,14 @@ const slugify = (title: string): string => {
     .replace(/(^-|-$)+/g, "")
 }
 
-export const generateSlugMaps = (movies: Movie[]) => {
+export const generateSlugMaps = async () => {
+  const movies = await movieServices.moviesSlug()
+  if(!movies.data) return
   const slugToId = new Map<string, string>()
   const idToSlug = new Map<string, string>()
   const slugCount: Record<string, number> = {}
 
-  for (const movie of movies) {
+  for (const movie of movies.data) {
 
     const baseSlug = slugify(movie.title)
     let slug = baseSlug
