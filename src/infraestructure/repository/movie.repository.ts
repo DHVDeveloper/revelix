@@ -3,7 +3,7 @@ import { AppConfig } from "@/lib/environments"
 import { ApiResponse } from "@/types/api-response.interface"
 import { MovieResponse } from "../interfaces/movie-response"
 import { apiFetch } from "@/utils/fetch"
-import { getIdBySlug, getSlugById } from "@/lib/slug/slug-store"
+import { getIdBySlug, getSlugById, initializeSlugStore } from "@/lib/slug/slug-store"
 
 export async function getMovies(): Promise<ApiResponse<MovieResponse[]>> {
   try {
@@ -17,10 +17,13 @@ export async function getMovies(): Promise<ApiResponse<MovieResponse[]>> {
     }
 
     const data:MovieResponse[] = await response.json()
+    await initializeSlugStore()
 
-    const moviesWithSlug = data.map((movie) => ({
-      ...movie, slug: getSlugById(movie.id) ?? ""
-    }))
+    const moviesWithSlug = data.map((movie) =>  {
+      const slug = getSlugById(movie.id)
+      return{
+      ...movie, slug: slug ?? ""
+    }})
 
     return {
       success: true,
@@ -34,9 +37,33 @@ export async function getMovies(): Promise<ApiResponse<MovieResponse[]>> {
   }
 }
 
+export async function getMoviesSlug(): Promise<ApiResponse<MovieResponse[]>> {
+  try {
+    const response = await apiFetch(`${AppConfig.API_BASE_URL}/films/movies`)
+
+    if (!response.ok) {
+      return {
+        success: false,
+        error: "Error getting movies",
+      }
+    }
+    const data:MovieResponse[] = await response.json()
+    return {
+      success: true,
+      data: data,
+    }
+  } catch {
+    return {
+      success: false,
+      error: "Server error",
+    }
+  }
+}
+
 
 export async function getMovieByMovieSlug(movieSlug: string): Promise<ApiResponse<MovieResponse>> {
   try {
+    await initializeSlugStore()
     const movieId = getIdBySlug(movieSlug)
     if (!movieId) {
       return {
@@ -66,6 +93,9 @@ export async function getMovieByMovieId(movieId: string): Promise<ApiResponse<Mo
       }
     }
     const data: MovieResponse = await response.json()
+
+    await initializeSlugStore()
+
     const movieSlug = getSlugById(data.id)
 
     return {
@@ -95,6 +125,8 @@ export async function getMoviesByGenreId(
 
     const data: MovieResponse[] = await response.json()
 
+    await initializeSlugStore()
+
     const moviesWithSlug = data.map((movie) => ({
       ...movie, slug: getSlugById(movie.id) ?? ""
     }))
@@ -122,6 +154,8 @@ export async function getUserMovies(): Promise<ApiResponse<string[]>> {
       }
     }
 
+    await initializeSlugStore()
+    
     const data = await response.json()
 
     return {
