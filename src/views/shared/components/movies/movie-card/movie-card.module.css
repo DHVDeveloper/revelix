@@ -2,6 +2,7 @@
     position: relative;
     height: 386px;
     min-width: 261px;
+    max-width: 261px;
     border-radius: 16px;
     overflow: hidden;
     transition: all 0.3s ease;
